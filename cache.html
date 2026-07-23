@@ -1,0 +1,88 @@
+<html manifest="psfree_lapse.cache">
+  <head>
+    <meta charset="utf-8">
+    <title>BARHAVKRN MUHAMED PIRANI</title>
+    <style>
+      body {
+        background:url('icon0.png');
+        background-color: #0a0a0a;
+        color: #3adb0d;
+        font-family: "Segoe UI", Tahoma, sans-serif;
+        text-align: center;
+      }
+      h2 {
+        margin-bottom: 20px;
+      }
+      #console {
+        font-family: monospace;
+        color: #41e30b
+        padding: 12px;
+        border-radius: 6px;
+        margin-top: 20px;
+        text-align: left;
+      }
+      #jailbreakBtn {
+        margin-top: 20px;
+        padding: 12px 24px;
+        font-size: 18px;
+        font-weight: bold;
+        border: none;
+        border-radius: 20px;
+        background: #090999;
+        color: ##000000;
+        cursor: not-allowed;
+        opacity: 10.0;
+        box-shadow: none;
+      }
+      footer {
+        margin-top: 30px;
+        font-size: 14px;
+        color: #888;
+      }
+    </style>
+  </head>
+  <body>
+    <h2> BY MUHAMED PIRANI (7.00 HATA 9.60)</h2>
+    <div>
+      <button id="jailbreakBtn">CHAVARE BA HATA XAZN DBIT</button>
+    </div>
+    <pre id="console"></pre>
+    <footer>
+
+    </footer>
+  </body>
+  <script>
+    // Clear history and prevent back navigation
+    history.replaceState(null, null, 'index.html');
+    var histlength = history.length;
+    history.go(-histlength);
+    // Logging utility
+    const outputConsole = document.getElementById("console");
+    window.log = (msg) => { outputConsole.textContent += msg + "\n"; };
+    // Download progress (% display)
+    function DLProgress(e) {
+      const percent = (Math.round((e.loaded / e.total) * 100));
+      window.log(`[CACHE] Downloading... ${percent}% complete.`);
+    }
+    // On cache complete
+    function DisplayCacheProgress() {
+      window.log(" ");
+      window.log("[SUCCESS] Cache installed successfully.");
+      window.log("Page will reload in 3 seconds...");
+      // Delay to show success message before navigation
+      setTimeout(function() { window.log("Reloading..."); }, 2000);
+      // Navigate back to index.html to load the exploit from cache
+      setTimeout(function() { location.reload(); }, 3000);
+    }
+    // Event listeners
+    window.applicationCache.addEventListener("progress", DLProgress, false);
+    window.applicationCache.oncached = function(e) { DisplayCacheProgress(); };
+    window.applicationCache.onupdateready = function(e) { DisplayCacheProgress(); };
+    // Initialization message on DOM load
+    document.addEventListener('DOMContentLoaded', () => {
+      outputConsole.textContent = ""; // Clear console log
+      window.log("AppCache download initiating...");
+      window.log("Please wait, this may take a few seconds.");
+    });
+  </script>
+</html>
